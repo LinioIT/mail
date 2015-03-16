@@ -1,5 +1,6 @@
 Linio Mail
 ==========
+[![Latest Stable Version](https://poser.pugx.org/linio/mail/v/stable.svg)](https://packagist.org/packages/linio/mail) [![License](https://poser.pugx.org/linio/mail/license.svg)](https://packagist.org/packages/linio/mail) [![Build Status](https://secure.travis-ci.org/LinioIT/mail.png)](http://travis-ci.org/LinioIT/mail) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LinioIT/mail/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LinioIT/mail/?branch=master)
 
 Linio Mail is yet another component of the Linio Framework. It aims to
 abstract email messaging by supporting multiple adapters.
