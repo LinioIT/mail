@@ -3,7 +3,6 @@
 namespace Linio\Component\Mail;
 
 use Doctrine\Common\Inflector\Inflector;
-use Linio\Component\Util\String;
 
 class AdapterFactory
 {
