@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace Linio\Component\Mail;
 
 class Message
@@ -40,7 +42,7 @@ class Message
     protected $headers = [];
 
     /**
-     * @var string
+     * @var mixed
      */
     protected $data;
 
@@ -49,17 +51,11 @@ class Message
      */
     protected $template;
 
-    /**
-     * @return Contact
-     */
-    public function getFrom()
+    public function getFrom(): Contact
     {
         return $this->from;
     }
 
-    /**
-     * @param Contact $from
-     */
     public function setFrom(Contact $from)
     {
         $this->from = $from;
@@ -68,7 +64,7 @@ class Message
     /**
      * @return Contact[]
      */
-    public function getTo()
+    public function getTo(): array
     {
         return $this->to;
     }
@@ -81,9 +77,6 @@ class Message
         $this->to = $to;
     }
 
-    /**
-     * @param Contact $to
-     */
     public function addTo(Contact $to)
     {
         $this->to[] = $to;
@@ -92,7 +85,7 @@ class Message
     /**
      * @return Contact[]
      */
-    public function getCc()
+    public function getCc(): array
     {
         return $this->cc;
     }
@@ -100,14 +93,11 @@ class Message
     /**
      * @param Contact[] $cc
      */
-    public function setCc($cc)
+    public function setCc(array $cc)
     {
         $this->cc = $cc;
     }
 
-    /**
-     * @param Contact $cc
-     */
     public function addCc(Contact $cc)
     {
         $this->cc[] = $cc;
@@ -116,7 +106,7 @@ class Message
     /**
      * @return Contact[]
      */
-    public function getBcc()
+    public function getBcc(): array
     {
         return $this->bcc;
     }
@@ -129,99 +119,62 @@ class Message
         $this->bcc = $bcc;
     }
 
-    /**
-     * @param Contact $bcc
-     */
     public function addBcc(Contact $bcc)
     {
         $this->bcc[] = $bcc;
     }
 
-    /**
-     * @return string
-     */
-    public function getSubject()
+    public function getSubject(): string
     {
         return $this->subject;
     }
 
-    /**
-     * @param string $subject
-     */
-    public function setSubject($subject)
+    public function setSubject(string $subject)
     {
         $this->subject = $subject;
     }
 
-    /**
-     * @return Contact
-     */
-    public function getReplyTo()
+    public function getReplyTo(): Contact
     {
         return $this->replyTo;
     }
 
-    /**
-     * @param Contact $replyTo
-     */
     public function setReplyTo(Contact $replyTo)
     {
         $this->replyTo = $replyTo;
     }
 
-    /**
-     * @return array
-     */
-    public function getHeaders()
+    public function getHeaders(): array
     {
         return $this->headers;
     }
 
-    /**
-     * @param array $headers
-     */
     public function setHeaders(array $headers)
     {
         $this->headers = $headers;
     }
 
-    /**
-     * @param string $key
-     * @param string $value
-     */
-    public function addHeader($key, $value)
+    public function addHeader(string $key, string $value)
     {
         $this->headers[$key] = $value;
     }
 
-    /**
-     * @return string
-     */
     public function getData()
     {
         return $this->data;
     }
 
-    /**
-     * @param string $data
-     */
     public function setData($data)
     {
         $this->data = $data;
     }
 
-    /**
-     * @return string
-     */
-    public function getTemplate()
+    public function getTemplate(): string
     {
         return $this->template;
     }
 
-    /**
-     * @param string $template
-     */
-    public function setTemplate($template)
+    public function setTemplate(string $template)
     {
         $this->template = $template;
     }

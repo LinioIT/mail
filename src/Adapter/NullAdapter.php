@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace Linio\Component\Mail\Adapter;
 
 use Linio\Component\Mail\AdapterInterface;
@@ -7,16 +9,10 @@ use Linio\Component\Mail\Message;
 
 class NullAdapter implements AdapterInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function __construct(array $config = array())
+    public function __construct(array $config = [])
     {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function send(Message $message)
     {
         return true;

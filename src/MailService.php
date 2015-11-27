@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace Linio\Component\Mail;
 
 use Psr\Log\LoggerInterface;
@@ -16,11 +18,7 @@ class MailService
      */
     protected $logger;
 
-    /**
-     * @param Message $message
-     * @return boolean
-     */
-    public function send(Message $message)
+    public function send(Message $message): bool
     {
         try {
             $this->adapter->send($message);
@@ -33,17 +31,11 @@ class MailService
         return true;
     }
 
-    /**
-     * @param AdapterInterface $adapter
-     */
     public function setAdapter(AdapterInterface $adapter)
     {
         $this->adapter = $adapter;
     }
 
-    /**
-     * @param \Psr\Log\LoggerInterface $logger
-     */
     public function setLogger(LoggerInterface $logger)
     {
         $this->logger = $logger;

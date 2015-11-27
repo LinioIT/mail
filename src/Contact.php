@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace Linio\Component\Mail;
 
 class Contact
@@ -14,44 +16,28 @@ class Contact
      */
     protected $email;
 
-    /**
-     * @param string $name
-     * @param string $email
-     */
-    public function __construct($name, $email)
+    public function __construct(string $name, string $email)
     {
         $this->name = $name;
         $this->email = $email;
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    /**
-     * @return string
-     */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * @param string $email
-     */
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }

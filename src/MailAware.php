@@ -1,25 +1,21 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace Linio\Component\Mail;
 
-trait MailTrait
+trait MailAware
 {
     /**
      * @var MailService
      */
     protected $mail;
 
-    /**
-     * @return MailService
-     */
-    public function getMail()
+    public function getMail(): MailService
     {
         return $this->mail;
     }
 
-    /**
-     * @param MailService $mail
-     */
     public function setMail(MailService $mail)
     {
         $this->mail = $mail;

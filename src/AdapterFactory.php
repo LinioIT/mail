@@ -1,17 +1,14 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace Linio\Component\Mail;
 
 use Doctrine\Common\Inflector\Inflector;
 
 class AdapterFactory
 {
-    /**
-     * @param string $adapterName
-     * @param array $adapterConfig
-     * @return \Linio\Component\Mail\AdapterInterface
-     */
-    public function getAdapter($adapterName, $adapterConfig = array())
+    public function getAdapter(string $adapterName, array $adapterConfig = []): AdapterInterface
     {
         $adapterClass = sprintf('%s\\Adapter\\%sAdapter', __NAMESPACE__, Inflector::classify($adapterName));
 
