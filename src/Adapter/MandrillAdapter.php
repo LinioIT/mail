@@ -1,10 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace Linio\Component\Mail\Adapter;
 
 use Linio\Component\Mail\AdapterInterface;
-use Linio\Component\Mail\Message;
 use Linio\Component\Mail\Contact;
+use Linio\Component\Mail\Message;
 
 class MandrillAdapter implements AdapterInterface
 {
@@ -13,17 +14,11 @@ class MandrillAdapter implements AdapterInterface
      */
     protected $mandrill;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function __construct(array $config = array())
+    public function __construct(array $config = [])
     {
         $this->mandrill = new \Mandrill($config['api_key']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function send(Message $message)
     {
         $result = $this->mandrill->messages->sendTemplate($message->getTemplate(), null, $this->prepareMessage($message))[0];
@@ -35,29 +30,21 @@ class MandrillAdapter implements AdapterInterface
         throw new \RuntimeException(sprintf('Mandrill could not send the email to "%s" due to: %s', $result['email'], $result['reject_reason']));
     }
 
-    /**
-     * @param array $data
-     * @return array
-     */
-    protected function prepareData(array $data)
+    protected function prepareData(array $data): array
     {
         $result = [];
 
         foreach ($data as $key => $value) {
             $result[] = [
                 'name' => $key,
-                'content' => $value
+                'content' => $value,
             ];
         }
 
         return $result;
     }
 
-    /**
-     * @param Message $message
-     * @return array
-     */
-    protected function prepareMessage(Message $message)
+    protected function prepareMessage(Message $message): array
     {
         return [
             'subject' => $message->getSubject(),
@@ -67,11 +54,11 @@ class MandrillAdapter implements AdapterInterface
             'track_opens' => true,
             'track_clicks' => true,
             'preserve_recipients' => true,
-            'global_merge_vars' => $this->prepareData($message->getData())
+            'global_merge_vars' => $this->prepareData($message->getData()),
         ];
     }
 
-    protected function getDestinations(Message $message)
+    protected function getDestinations(Message $message): array
     {
         $preparedTo = $this->prepareContacts($message->getTo(), 'to');
         $preparedBcc = $this->prepareContacts($message->getBcc(), 'bcc');
@@ -82,10 +69,8 @@ class MandrillAdapter implements AdapterInterface
 
     /**
      * @param Contact[] $contacts
-     * @param string $type
-     * @return array
      */
-    protected function prepareContacts(array $contacts, $type)
+    protected function prepareContacts(array $contacts, string $type): array
     {
         $result = [];
 
@@ -93,28 +78,20 @@ class MandrillAdapter implements AdapterInterface
             $result[] = [
                 'name' => $contact->getName(),
                 'email' => $contact->getEmail(),
-                'type' => $type
+                'type' => $type,
             ];
         }
 
         return $result;
     }
 
-    /**
-     * @return \Mandrill
-     */
-    public function getMandrill()
+    public function getMandrill(): \Mandrill
     {
         return $this->mandrill;
     }
 
-    /**
-     * @param \Mandrill $mandrill
-     */
     public function setMandrill(\Mandrill $mandrill)
     {
         $this->mandrill = $mandrill;
-
-        return $this;
     }
 }

@@ -1,16 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace Linio\Component\Mail;
 
 interface AdapterInterface
 {
-    /**
-     * @param array $config
-     */
     public function __construct(array $config);
-
-    /**
-     * @param \Linio\Component\Mail\Message $message
-     */
     public function send(Message $message);
 }

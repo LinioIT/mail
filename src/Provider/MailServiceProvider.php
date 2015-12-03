@@ -1,11 +1,12 @@
 <?php
+declare(strict_types=1);
 
 namespace Linio\Component\Mail\Provider;
 
+use Linio\Component\Mail\AdapterFactory;
+use Linio\Component\Mail\MailService;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-use Linio\Component\Mail\MailService;
-use Linio\Component\Mail\AdapterFactory;
 
 class MailServiceProvider implements ServiceProviderInterface
 {
