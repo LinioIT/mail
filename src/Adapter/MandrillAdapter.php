@@ -1,24 +1,22 @@
 <?php
-
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Linio\Component\Mail\Adapter;
 
 use Linio\Component\Mail\AdapterInterface;
 use Linio\Component\Mail\Contact;
 use Linio\Component\Mail\Message;
-use Mandrill;
 
 class MandrillAdapter implements AdapterInterface
 {
     /**
-     * @var Mandrill
+     * @var \Mandrill
      */
     protected $mandrill;
 
     public function __construct(array $config = [])
     {
-        $this->mandrill = new Mandrill($config['api_key']);
+        $this->mandrill = new \Mandrill($config['api_key']);
     }
 
     public function send(Message $message)
@@ -87,12 +85,12 @@ class MandrillAdapter implements AdapterInterface
         return $result;
     }
 
-    public function getMandrill(): Mandrill
+    public function getMandrill(): \Mandrill
     {
         return $this->mandrill;
     }
 
-    public function setMandrill(Mandrill $mandrill)
+    public function setMandrill(\Mandrill $mandrill)
     {
         $this->mandrill = $mandrill;
     }
