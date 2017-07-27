@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Linio\Component\Mail\Adapter;
 
-use Linio\Component\Mail\Message;
 use Linio\Component\Mail\Contact;
+use Linio\Component\Mail\Message;
 
 class NullAdapterTest extends \PHPUnit_Framework_TestCase
 {

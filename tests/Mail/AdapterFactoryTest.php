@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Linio\Component\Mail;
 
 class AdapterFactoryTest extends \PHPUnit_Framework_TestCase
@@ -12,7 +14,7 @@ class AdapterFactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
     public function testIsDetectingBadAdapter()
     {
