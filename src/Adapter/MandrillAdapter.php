@@ -20,7 +20,7 @@ class MandrillAdapter implements AdapterInterface
         $this->mandrill = new \Mandrill($config['api_key']);
     }
 
-    public function send(Message $message)
+    public function send(Message $message): void
     {
         $result = $this->mandrill->messages->sendTemplate($message->getTemplate(), null, $this->prepareMessage($message))[0];
 
@@ -63,9 +63,8 @@ class MandrillAdapter implements AdapterInterface
     {
         $preparedTo = $this->prepareContacts($message->getTo(), 'to');
         $preparedBcc = $this->prepareContacts($message->getBcc(), 'bcc');
-        $destination = array_merge($preparedTo, $preparedBcc);
 
-        return $destination;
+        return array_merge($preparedTo, $preparedBcc);
     }
 
     /**
@@ -91,7 +90,7 @@ class MandrillAdapter implements AdapterInterface
         return $this->mandrill;
     }
 
-    public function setMandrill(\Mandrill $mandrill)
+    public function setMandrill(\Mandrill $mandrill): void
     {
         $this->mandrill = $mandrill;
     }

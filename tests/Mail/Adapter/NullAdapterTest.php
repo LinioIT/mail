@@ -7,9 +7,9 @@ namespace Linio\Component\Mail\Adapter;
 use Linio\Component\Mail\Contact;
 use Linio\Component\Mail\Message;
 
-class NullAdapterTest extends \PHPUnit_Framework_TestCase
+class NullAdapterTest extends \PHPUnit\Framework\TestCase
 {
-    public function testIsSending()
+    public function testIsSending(): void
     {
         $adapter = new NullAdapter();
 

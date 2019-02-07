@@ -16,7 +16,7 @@ trait MailAware
         return $this->mail;
     }
 
-    public function setMail(MailService $mail)
+    public function setMail(MailService $mail): void
     {
         $this->mail = $mail;
     }

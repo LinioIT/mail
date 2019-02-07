@@ -11,7 +11,7 @@ use Pimple\ServiceProviderInterface;
 
 class MailServiceProvider implements ServiceProviderInterface
 {
-    public function register(Container $container)
+    public function register(Container $container): void
     {
         if (!isset($container['mail.adapter_name'])) {
             $container['mail.adapter_name'] = 'null';
@@ -19,9 +19,8 @@ class MailServiceProvider implements ServiceProviderInterface
 
         $container['mail.adapter'] = $container->factory(function ($container) {
             $adapterFactory = new AdapterFactory();
-            $adapter = $adapterFactory->getAdapter($container['mail.adapter_name'], $container['mail.adapter_options']);
 
-            return $adapter;
+            return $adapterFactory->getAdapter($container['mail.adapter_name'], $container['mail.adapter_options']);
         });
 
         $container['mail.service'] = function ($container) {

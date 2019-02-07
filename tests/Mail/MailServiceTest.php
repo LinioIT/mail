@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Linio\Component\Mail;
 
-class MailServiceTest extends \PHPUnit_Framework_TestCase
+class MailServiceTest extends \PHPUnit\Framework\TestCase
 {
-    public function testIsSendingMessage()
+    public function testIsSendingMessage(): void
     {
         $message = new Message();
 
-        $adapterMock = $this->getMock('Linio\Component\Mail\AdapterInterface');
+        $adapterMock = $this->createMock('Linio\Component\Mail\AdapterInterface');
         $adapterMock->expects($this->once())
             ->method('send')
             ->with($this->equalTo($message));
@@ -20,16 +20,16 @@ class MailServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($mail->send($message));
     }
 
-    public function testIsDetectingProblemWhenSendingMessage()
+    public function testIsDetectingProblemWhenSendingMessage(): void
     {
         $message = new Message();
 
-        $loggerMock = $this->getMock('Psr\Log\LoggerInterface');
+        $loggerMock = $this->createMock('Psr\Log\LoggerInterface');
         $loggerMock->expects($this->once())
             ->method('error')
             ->with($this->equalTo('[Mail] An error has occurred: Oops!'), $this->contains('Oops!'));
 
-        $adapterMock = $this->getMock('Linio\Component\Mail\AdapterInterface');
+        $adapterMock = $this->createMock('Linio\Component\Mail\AdapterInterface');
         $adapterMock->expects($this->once())
             ->method('send')
             ->with($this->equalTo($message))

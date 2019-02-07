@@ -56,7 +56,7 @@ class Message
         return $this->from;
     }
 
-    public function setFrom(Contact $from)
+    public function setFrom(Contact $from): void
     {
         $this->from = $from;
     }
@@ -72,12 +72,12 @@ class Message
     /**
      * @param Contact[] $to
      */
-    public function setTo(array $to)
+    public function setTo(array $to): void
     {
         $this->to = $to;
     }
 
-    public function addTo(Contact $to)
+    public function addTo(Contact $to): void
     {
         $this->to[] = $to;
     }
@@ -93,12 +93,12 @@ class Message
     /**
      * @param Contact[] $cc
      */
-    public function setCc(array $cc)
+    public function setCc(array $cc): void
     {
         $this->cc = $cc;
     }
 
-    public function addCc(Contact $cc)
+    public function addCc(Contact $cc): void
     {
         $this->cc[] = $cc;
     }
@@ -114,12 +114,12 @@ class Message
     /**
      * @param Contact[] $bcc
      */
-    public function setBcc($bcc)
+    public function setBcc($bcc): void
     {
         $this->bcc = $bcc;
     }
 
-    public function addBcc(Contact $bcc)
+    public function addBcc(Contact $bcc): void
     {
         $this->bcc[] = $bcc;
     }
@@ -129,7 +129,7 @@ class Message
         return $this->subject;
     }
 
-    public function setSubject(string $subject)
+    public function setSubject(string $subject): void
     {
         $this->subject = $subject;
     }
@@ -139,7 +139,7 @@ class Message
         return $this->replyTo;
     }
 
-    public function setReplyTo(Contact $replyTo)
+    public function setReplyTo(Contact $replyTo): void
     {
         $this->replyTo = $replyTo;
     }
@@ -149,12 +149,12 @@ class Message
         return $this->headers;
     }
 
-    public function setHeaders(array $headers)
+    public function setHeaders(array $headers): void
     {
         $this->headers = $headers;
     }
 
-    public function addHeader(string $key, string $value)
+    public function addHeader(string $key, string $value): void
     {
         $this->headers[$key] = $value;
     }
@@ -164,7 +164,7 @@ class Message
         return $this->data;
     }
 
-    public function setData($data)
+    public function setData($data): void
     {
         $this->data = $data;
     }
@@ -174,7 +174,7 @@ class Message
         return $this->template;
     }
 
-    public function setTemplate(string $template)
+    public function setTemplate(string $template): void
     {
         $this->template = $template;
     }

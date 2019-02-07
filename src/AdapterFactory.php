@@ -16,8 +16,6 @@ class AdapterFactory
             throw new \InvalidArgumentException('Adapter class does not exist: ' . $adapterClass);
         }
 
-        $adapter = new $adapterClass($adapterConfig);
-
-        return $adapter;
+        return new $adapterClass($adapterConfig);
     }
 }
